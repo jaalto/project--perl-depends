@@ -52,17 +52,20 @@
 <hr />
 <h1><a name="description">DESCRIPTION</a></h1>
 <p>Find out roughly the modules the program uses. This is based on the
-idea, that Perl evaluates the <code>use</code> commands at compile time and
-stored the loaded module information into the <em>%INC</em> variable. By
+idea, that Perl evaluates the &quot;use&quot; commands at compile time and
+stores the loaded module information into the <code>%INC</code> variable. By
 examining the loaded modules and comparing them against the standard
 Perl modules, the extenal module dpendencies can be roughly estimated.</p>
-<p>The original files need to be instrumented for this to work and the
-modifications are stored in a temporary file.</p>
-<p>In order to see the depends, user must run the instrumented files.
-This is because, the program cannot know what possible options needs
-to passed to the program to trigger &quot;no behavior&quot;, that is, something
-that doesn't actually run the program. Such options would be
---version, --dry-run, --generate-syntax-error-now etc.</p>
+<p>The depends information can be used to determine what external modules
+have to be installed before program can be used.</p>
+<p>The file need to be instrumented for the depency checking. The rusulting
+&quot;binary&quot; is then stored in a temporary file which the user runs.</p>
+<p>To prgram does not run the instrumented files because it cannot know
+what possible options need to be passed to the program to trigger &quot;no
+behavior&quot;. That is, something that doesn't actually run the program.
+Such options would include --version, --dry-run,
+--generate-syntax-error-now, invalid files etc. The user can know
+better the details of the inspected file.</p>
 <p>An example of output: the external module depends here is 'Regexp::Common'
 and the rest of them can be ignored.</p>
 <pre>
