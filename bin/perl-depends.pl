@@ -50,7 +50,7 @@ use vars qw ( $VERSION );
 #   The following variable is updated by custom Emacs setup whenever
 #   this file is saved.
 
-my $VERSION = '2010.0318.0919';
+my $VERSION = '2010.0318.0940';
 
 my $inject = << 'EOF';
 
@@ -194,19 +194,23 @@ perl-depends - Roughly find out module depends from perl file(s)
 =head1 DESCRIPTION
 
 Find out roughly the modules the program uses. This is based on the
-idea, that Perl evaluates the C<use> commands at compile time and
-stored the loaded module information into the I<%INC> variable. By
+idea, that Perl evaluates the "use" commands at compile time and
+stores the loaded module information into the C<%INC> variable. By
 examining the loaded modules and comparing them against the standard
 Perl modules, the extenal module dpendencies can be roughly estimated.
 
-The original files need to be instrumented for this to work and the
-modifications are stored in a temporary file.
+The depends information can be used to determine what external modules
+have to be installed before program can be used.
 
-In order to see the depends, user must run the instrumented files.
-This is because, the program cannot know what possible options needs
-to passed to the program to trigger "no behavior", that is, something
-that doesn't actually run the program. Such options would be
---version, --dry-run, --generate-syntax-error-now etc.
+The file need to be instrumented for the depency checking. The rusulting
+"binary" is then stored in a temporary file which the user runs.
+
+To prgram does not run the instrumented files because it cannot know
+what possible options need to be passed to the program to trigger "no
+behavior". That is, something that doesn't actually run the program.
+Such options would include --version, --dry-run,
+--generate-syntax-error-now, invalid files etc. The user can know
+better the details of the inspected file.
 
 An example of output: the external module depends here is 'Regexp::Common'
 and the rest of them can be ignored.

@@ -2,8 +2,8 @@ README: perl-depends - Roughly find out module depends from a perl file
 ----------------------------------------------------------------
 
 Find out roughly the modules the program uses. This is based on the
-idea, that Perl evaluates the C<use> commands at compile time and
-stored the loaded module information into the %INC variable. By
+idea, that Perl evaluates the "use" commands at compile time and
+stores the loaded module information into the %INC variable. By
 examining the loaded modules and comparing them against the standard
 Perl modules, the extenal module dpendencies can be roughly estimated.
 
