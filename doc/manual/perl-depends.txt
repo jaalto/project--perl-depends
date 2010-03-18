@@ -1,0 +1,88 @@
+NAME
+    perl-depends - Roughly find out module depends from perl file(s)
+
+SYNOPSIS
+      perl-depends [options] FILE [FILE ...]
+
+DESCRIPTION
+    Find out roughly the modules the program uses. This is based on the
+    idea, that Perl evaluates the "use" commands at compile time and stored
+    the loaded module information into the *%INC* variable. By examining the
+    loaded modules and comparing them against the standard Perl modules, the
+    extenal module dpendencies can be roughly estimated.
+
+    The original files need to be instrumented for this to work and the
+    modifications are stored in a temporary file.
+
+    In order to see the depends, user must run the instrumented files. This
+    is because, the program cannot know what possible options needs to
+    passed to the program to trigger "no behavior", that is, something that
+    doesn't actually run the program. Such options would be --version,
+    --dry-run, --generate-syntax-error-now etc.
+
+    An example of output: the external module depends here is
+    'Regexp::Common' and the rest of them can be ignored.
+
+        Regexp::Common                 Regexp/Common.pm
+        Regexp::Common::CC             Regexp/Common/CC.pm
+        ...
+
+OPTIONS
+    -e, --extension=EXT
+        Use extension EXT for instrumented files. The defaul is ".tmp".
+
+    -h, --help
+        Print text help
+
+    --help-exclude
+        Print default exclude path value when --exclude-vcs is used.
+
+    --help-html
+        Print help in HTML format.
+
+    --help-man
+        Print help in manual page man(1) format.
+
+    -v, --verbose LEVEL
+        Print informational messages. Increase numeric LEVEL for more
+        verbosity.
+
+    -V, --version
+        Print contact and version information.
+
+EXAMPLES
+    Intrument a file, run it to see results and delete instrumentation:
+
+        perl-depends file.pl
+        perl file.pl.tmp --version
+        rm *.tmp
+
+TROUBLESHOOTING
+    None.
+
+EXAMPLES
+    None.
+
+ENVIRONMENT
+    None.
+
+FILES
+    None.
+
+SEE ALSO
+    cloc(1)
+
+COREQUISITES
+    Uses standard Perl modules.
+
+AVAILABILITY
+    Homepage is at http://freshmeat.net/projects/perl-depends
+
+AUTHORS
+    Copyright (C) 2009-2010 Jari Aalto.
+
+LICENSE
+    This program is free software; you can redistribute and/or modify
+    program under the terms of GNU General Public license either version 2
+    of the License, or (at your option) any later version.
+

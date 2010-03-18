@@ -1,0 +1,35 @@
+README: perl-depends - Roughly find out module depends from a perl file
+----------------------------------------------------------------
+
+Find out roughly the modules the program uses. This is based on the
+idea, that Perl evaluates the C<use> commands at compile time and
+stored the loaded module information into the %INC variable. By
+examining the loaded modules and comparing them against the standard
+Perl modules, the extenal module dpendencies can be roughly estimated.
+
+The source package directories:
+
+    bin/            The program and system manual page (*.1)
+    doc/            Documentation
+
+Important files
+
+    COPYING         GPL v2 or later Licence
+    INSTALL         Install instructions
+    ChangeLog       Project change records
+
+Project details
+
+    Homepage
+      http://freshmeat.net/projects/perl-depends
+
+    To report bugs
+      See freshmeat page
+
+    Source code repository
+      See freshmeat page
+
+    Depends
+      Perl (any version). Uses only standard Perl libraries.
+
+End of file
