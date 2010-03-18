@@ -1,0 +1,11 @@
+2010-03-18 Thu  Jari Aalto  <jari.aalto@cante.net>
+
+	* ChangeLog: New file.
+
+	* INSTAL: New file.
+
+	* README: New file.
+
+	* Makefile: New file.
+
+	* bin/perl-depends.pl: New file.
