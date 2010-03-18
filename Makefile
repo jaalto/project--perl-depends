@@ -149,10 +149,11 @@ txt: doc/manual/$(PACKAGE).txt
 # Rule: doc - Generate or update all documentation
 doc: man html txt
 
+# Rule: test-pod - Check POD manual page syntax
 test-pod:
 	podchecker $(PL_SCRIPT)
 
-# Rule: perl-test - Check program syntax
+# Rule: test-perl - Check program syntax
 test-perl:
 	# perl-test - Check syntax
 	perl -cw $(PL_SCRIPT)
