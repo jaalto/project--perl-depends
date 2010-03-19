@@ -50,7 +50,7 @@ use vars qw ( $VERSION );
 #   The following variable is updated by custom Emacs setup whenever
 #   this file is saved.
 
-my $VERSION = '2010.0318.0940';
+my $VERSION = '2010.0319.1900';
 
 my $inject = << 'EOF';
 
@@ -185,7 +185,7 @@ sub Initialize ()
 
 =head1 NAME
 
-perl-depends - Roughly find out module depends from perl file(s)
+perl-depends - Roughly find out module depends from Perl file(s)
 
 =head1 SYNOPSIS
 
@@ -197,12 +197,12 @@ Find out roughly the modules the program uses. This is based on the
 idea, that Perl evaluates the "use" commands at compile time and
 stores the loaded module information into the C<%INC> variable. By
 examining the loaded modules and comparing them against the standard
-Perl modules, the extenal module dpendencies can be roughly estimated.
+Perl modules, the external module dependencies can be roughly estimated.
 
 The depends information can be used to determine what external modules
 have to be installed before program can be used.
 
-The file need to be instrumented for the depency checking. The rusulting
+The file need to be instrumented for the dependency checking. The resulting
 "binary" is then stored in a temporary file which the user runs.
 
 To prgram does not run the instrumented files because it cannot know
@@ -256,7 +256,7 @@ Print contact and version information.
 
 =head1 EXAMPLES
 
-Intrument a file, run it to see results and delete instrumentation:
+Instrument a file, run it to see results and delete instrumentation:
 
     perl-depends file.pl
     perl file.pl.tmp --version

@@ -1,3 +1,7 @@
+2010-03-19 Fri  Jari Aalto  <jari.aalto@cante.net>
+
+	* bin/perl-depends.pl: (HELP::POD): Fix typos.
+
 2010-03-18 Thu  Jari Aalto  <jari.aalto@cante.net>
 
 	* ChangeLog: New file.
