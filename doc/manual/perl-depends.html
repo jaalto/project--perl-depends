@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>perl-depends - Roughly find out module depends from perl file</title>
+<title>perl-depends - Roughly find out module depends from Perl file</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <link rev="made" href="mailto:root@localhost" />
 </head>
@@ -40,7 +40,7 @@
 </p>
 <hr />
 <h1><a name="name">NAME</a></h1>
-<p>perl-depends - Roughly find out module depends from perl file(s)</p>
+<p>perl-depends - Roughly find out module depends from Perl file(s)</p>
 <p>
 </p>
 <hr />
@@ -55,10 +55,10 @@
 idea, that Perl evaluates the &quot;use&quot; commands at compile time and
 stores the loaded module information into the <code>%INC</code> variable. By
 examining the loaded modules and comparing them against the standard
-Perl modules, the extenal module dpendencies can be roughly estimated.</p>
+Perl modules, the external module dependencies can be roughly estimated.</p>
 <p>The depends information can be used to determine what external modules
 have to be installed before program can be used.</p>
-<p>The file need to be instrumented for the depency checking. The rusulting
+<p>The file need to be instrumented for the dependency checking. The resulting
 &quot;binary&quot; is then stored in a temporary file which the user runs.</p>
 <p>To prgram does not run the instrumented files because it cannot know
 what possible options need to be passed to the program to trigger &quot;no
@@ -118,7 +118,7 @@ verbosity.</p>
 </p>
 <hr />
 <h1><a name="examples">EXAMPLES</a></h1>
-<p>Intrument a file, run it to see results and delete instrumentation:</p>
+<p>Instrument a file, run it to see results and delete instrumentation:</p>
 <pre>
     perl-depends file.pl
     perl file.pl.tmp --version
