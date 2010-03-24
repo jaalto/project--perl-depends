@@ -5,7 +5,8 @@ Find out roughly the modules the program uses. This is based on the
 idea, that Perl evaluates the "use" commands at compile time and
 stores the loaded module information into the %INC variable. By
 examining the loaded modules and comparing them against the standard
-Perl modules, the extenal module dpendencies can be roughly estimated.
+Perl modules, the external module dependencies can be roughly
+estimated.
 
 The source package directories:
 
