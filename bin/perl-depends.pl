@@ -50,7 +50,7 @@ use vars qw ( $VERSION );
 #   The following variable is updated by custom Emacs setup whenever
 #   this file is saved.
 
-my $VERSION = '2010.0324.1837';
+my $VERSION = '2010.0324.1846';
 
 my $inject = << 'EOF';
 
@@ -291,7 +291,7 @@ Homepage is at http://freshmeat.net/projects/perl-depends
 
 =head1 AUTHORS
 
-Copyright (C) 2009-2010 Jari Aalto.
+Copyright (C) 2009-2010 Jari Aalto
 
 =head1 LICENSE
 
