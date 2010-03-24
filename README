@@ -1,4 +1,4 @@
-README: perl-depends - Roughly find out module depends from a perl file
+README: perl-depends - Roughly find out module depends from a Perl file
 -----------------------------------------------------------------------
 
 Find out roughly the modules the program uses. This is based on the
