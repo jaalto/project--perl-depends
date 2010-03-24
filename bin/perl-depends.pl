@@ -50,7 +50,7 @@ use vars qw ( $VERSION );
 #   The following variable is updated by custom Emacs setup whenever
 #   this file is saved.
 
-my $VERSION = '2010.0324.1846';
+my $VERSION = '2010.0324.1852';
 
 my $inject = << 'EOF';
 
@@ -195,9 +195,10 @@ perl-depends - Roughly find out module depends from Perl file(s)
 
 Find out roughly the modules the program uses. This is based on the
 idea, that Perl evaluates the "use" commands at compile time and
-stores the loaded module information into the C<%INC> variable. By
+stores the loaded module information into the %INC variable. By
 examining the loaded modules and comparing them against the standard
-Perl modules, the external module dependencies can be roughly estimated.
+Perl modules, the external module dependencies can be roughly
+estimated.
 
 The depends information can be used to determine what external modules
 have to be installed before a program can be used.
