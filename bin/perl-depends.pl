@@ -50,7 +50,7 @@ use vars qw ( $VERSION );
 #   The following variable is updated by custom Emacs setup whenever
 #   this file is saved.
 
-my $VERSION = '2010.0319.1900';
+my $VERSION = '2010.0324.1837';
 
 my $inject = << 'EOF';
 
@@ -200,20 +200,23 @@ examining the loaded modules and comparing them against the standard
 Perl modules, the external module dependencies can be roughly estimated.
 
 The depends information can be used to determine what external modules
-have to be installed before program can be used.
+have to be installed before a program can be used.
 
-The file need to be instrumented for the dependency checking. The resulting
-"binary" is then stored in a temporary file which the user runs.
+The target FILE have to be instrumented with the dependency checking
+code. The resulting "binary" is then stored in a temporary file which
+the user runs.
 
-To prgram does not run the instrumented files because it cannot know
-what possible options need to be passed to the program to trigger "no
-behavior". That is, something that doesn't actually run the program.
-Such options would include --version, --dry-run,
---generate-syntax-error-now, invalid files etc. The user can know
-better the details of the inspected file.
+This program does not run the instrumented files because it cannot
+know what possible options need to be passed for the program to
+trigger "no behavior". That is, something that doesn't actually
+involve executing the "binary" in real. Such options passed would
+include --version, --dry-run, invalid options like
+--generate-syntax-error-now, or invalid files etc. to make program
+stop on error. The user can know better the details of running the
+intrumented file.
 
-An example of output: the external module depends here is 'Regexp::Common'
-and the rest of them can be ignored.
+An example of output: the external module depends here is
+'Regexp::Common' and the rest of them can be ignored.
 
     Regexp::Common                 Regexp/Common.pm
     Regexp::Common::CC             Regexp/Common/CC.pm
@@ -225,15 +228,11 @@ and the rest of them can be ignored.
 
 =item B<-e, --extension=EXT>
 
-Use extension EXT for instrumented files. The defaul is C<.tmp>.
+Use extension EXT for instrumented files. The default is C<.tmp>.
 
 =item B<-h, --help>
 
 Print text help
-
-=item B<--help-exclude>
-
-Print default exclude path value when B<--exclude-vcs> is used.
 
 =item B<--help-html>
 
@@ -280,7 +279,7 @@ None.
 
 =head1 SEE ALSO
 
-cloc(1)
+cpan(1)
 
 =head1 COREQUISITES
 

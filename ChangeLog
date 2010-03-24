@@ -1,3 +1,9 @@
+2010-03-24 Wed  Jari Aalto  <jari.aalto@cante.net>
+
+	* bin/perl-depends.pl: (POD::DESCRIPTION): Fix typos.
+	(POD::OPTIONS): Remove --help-exclude. There is no such option.
+	(POD::SEE ALSO): Remove cloc(1), add cpan(1).
+
 2010-03-19 Fri  Jari Aalto  <jari.aalto@cante.net>
 
 	* bin/perl-depends.pl: (HELP::POD): Fix typos.
