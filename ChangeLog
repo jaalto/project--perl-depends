@@ -1,5 +1,7 @@
 2010-03-24 Wed  Jari Aalto  <jari.aalto@cante.net>
 
+	* README (README): Add Copyright and License.
+
 	* bin/perl-depends.pl: (POD::DESCRIPTION): Fix typos.
 	(POD::OPTIONS): Remove --help-exclude. There is no such option.
 	(POD::SEE ALSO): Remove cloc(1), add cpan(1).
