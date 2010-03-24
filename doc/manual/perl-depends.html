@@ -57,17 +57,20 @@ stores the loaded module information into the <code>%INC</code> variable. By
 examining the loaded modules and comparing them against the standard
 Perl modules, the external module dependencies can be roughly estimated.</p>
 <p>The depends information can be used to determine what external modules
-have to be installed before program can be used.</p>
-<p>The file need to be instrumented for the dependency checking. The resulting
-&quot;binary&quot; is then stored in a temporary file which the user runs.</p>
-<p>To prgram does not run the instrumented files because it cannot know
-what possible options need to be passed to the program to trigger &quot;no
-behavior&quot;. That is, something that doesn't actually run the program.
-Such options would include --version, --dry-run,
---generate-syntax-error-now, invalid files etc. The user can know
-better the details of the inspected file.</p>
-<p>An example of output: the external module depends here is 'Regexp::Common'
-and the rest of them can be ignored.</p>
+have to be installed before a program can be used.</p>
+<p>The target FILE have to be instrumented with the dependency checking
+code. The resulting &quot;binary&quot; is then stored in a temporary file which
+the user runs.</p>
+<p>This program does not run the instrumented files because it cannot
+know what possible options need to be passed for the program to
+trigger &quot;no behavior&quot;. That is, something that doesn't actually
+involve executing the &quot;binary&quot; in real. Such options passed would
+include --version, --dry-run, invalid options like
+--generate-syntax-error-now, or invalid files etc. to make program
+stop on error. The user can know better the details of running the
+intrumented file.</p>
+<p>An example of output: the external module depends here is
+'Regexp::Common' and the rest of them can be ignored.</p>
 <pre>
     Regexp::Common                 Regexp/Common.pm
     Regexp::Common::CC             Regexp/Common/CC.pm
@@ -80,17 +83,12 @@ and the rest of them can be ignored.</p>
 <dt><strong><a name="e_extension_ext" class="item"><strong>-e, --extension=EXT</strong></a></strong></dt>
 
 <dd>
-<p>Use extension EXT for instrumented files. The defaul is <code>.tmp</code>.</p>
+<p>Use extension EXT for instrumented files. The default is <code>.tmp</code>.</p>
 </dd>
 <dt><strong><a name="h_help" class="item"><strong>-h, --help</strong></a></strong></dt>
 
 <dd>
 <p>Print text help</p>
-</dd>
-<dt><strong><a name="help_exclude" class="item"><strong>--help-exclude</strong></a></strong></dt>
-
-<dd>
-<p>Print default exclude path value when <strong>--exclude-vcs</strong> is used.</p>
 </dd>
 <dt><strong><a name="help_html" class="item"><strong>--help-html</strong></a></strong></dt>
 
@@ -147,7 +145,7 @@ verbosity.</p>
 </p>
 <hr />
 <h1><a name="see_also">SEE ALSO</a></h1>
-<p><code>cloc(1)</code></p>
+<p><code>cpan(1)</code></p>
 <p>
 </p>
 <hr />

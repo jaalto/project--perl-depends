@@ -12,18 +12,19 @@ DESCRIPTION
     external module dependencies can be roughly estimated.
 
     The depends information can be used to determine what external modules
-    have to be installed before program can be used.
+    have to be installed before a program can be used.
 
-    The file need to be instrumented for the dependency checking. The
-    resulting "binary" is then stored in a temporary file which the user
-    runs.
+    The target FILE have to be instrumented with the dependency checking
+    code. The resulting "binary" is then stored in a temporary file which
+    the user runs.
 
-    To prgram does not run the instrumented files because it cannot know
-    what possible options need to be passed to the program to trigger "no
-    behavior". That is, something that doesn't actually run the program.
-    Such options would include --version, --dry-run,
-    --generate-syntax-error-now, invalid files etc. The user can know better
-    the details of the inspected file.
+    This program does not run the instrumented files because it cannot know
+    what possible options need to be passed for the program to trigger "no
+    behavior". That is, something that doesn't actually involve executing
+    the "binary" in real. Such options passed would include --version,
+    --dry-run, invalid options like --generate-syntax-error-now, or invalid
+    files etc. to make program stop on error. The user can know better the
+    details of running the intrumented file.
 
     An example of output: the external module depends here is
     'Regexp::Common' and the rest of them can be ignored.
@@ -34,13 +35,10 @@ DESCRIPTION
 
 OPTIONS
     -e, --extension=EXT
-        Use extension EXT for instrumented files. The defaul is ".tmp".
+        Use extension EXT for instrumented files. The default is ".tmp".
 
     -h, --help
         Print text help
-
-    --help-exclude
-        Print default exclude path value when --exclude-vcs is used.
 
     --help-html
         Print help in HTML format.
@@ -75,7 +73,7 @@ FILES
     None.
 
 SEE ALSO
-    cloc(1)
+    cpan(1)
 
 COREQUISITES
     Uses standard Perl modules.

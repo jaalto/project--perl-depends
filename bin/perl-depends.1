@@ -124,7 +124,7 @@
 .\" ========================================================================
 .\"
 .IX Title "PERL-DEPENDS 1"
-.TH PERL-DEPENDS 1 "2010-03-19" "perl v5.10.1" "cvs status - formatter"
+.TH PERL-DEPENDS 1 "2010-03-24" "perl v5.10.1" "cvs status - formatter"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -145,20 +145,23 @@ examining the loaded modules and comparing them against the standard
 Perl modules, the external module dependencies can be roughly estimated.
 .PP
 The depends information can be used to determine what external modules
-have to be installed before program can be used.
+have to be installed before a program can be used.
 .PP
-The file need to be instrumented for the dependency checking. The resulting
-\&\*(L"binary\*(R" is then stored in a temporary file which the user runs.
+The target \s-1FILE\s0 have to be instrumented with the dependency checking
+code. The resulting \*(L"binary\*(R" is then stored in a temporary file which
+the user runs.
 .PP
-To prgram does not run the instrumented files because it cannot know
-what possible options need to be passed to the program to trigger \*(L"no
-behavior\*(R". That is, something that doesn't actually run the program.
-Such options would include \-\-version, \-\-dry\-run,
-\&\-\-generate\-syntax\-error\-now, invalid files etc. The user can know
-better the details of the inspected file.
+This program does not run the instrumented files because it cannot
+know what possible options need to be passed for the program to
+trigger \*(L"no behavior\*(R". That is, something that doesn't actually
+involve executing the \*(L"binary\*(R" in real. Such options passed would
+include \-\-version, \-\-dry\-run, invalid options like
+\&\-\-generate\-syntax\-error\-now, or invalid files etc. to make program
+stop on error. The user can know better the details of running the
+intrumented file.
 .PP
-An example of output: the external module depends here is 'Regexp::Common'
-and the rest of them can be ignored.
+An example of output: the external module depends here is
+\&'Regexp::Common' and the rest of them can be ignored.
 .PP
 .Vb 3
 \&    Regexp::Common                 Regexp/Common.pm
@@ -169,13 +172,10 @@ and the rest of them can be ignored.
 .IX Header "OPTIONS"
 .IP "\fB\-e, \-\-extension=EXT\fR" 4
 .IX Item "-e, --extension=EXT"
-Use extension \s-1EXT\s0 for instrumented files. The defaul is \f(CW\*(C`.tmp\*(C'\fR.
+Use extension \s-1EXT\s0 for instrumented files. The default is \f(CW\*(C`.tmp\*(C'\fR.
 .IP "\fB\-h, \-\-help\fR" 4
 .IX Item "-h, --help"
 Print text help
-.IP "\fB\-\-help\-exclude\fR" 4
-.IX Item "--help-exclude"
-Print default exclude path value when \fB\-\-exclude\-vcs\fR is used.
 .IP "\fB\-\-help\-html\fR" 4
 .IX Item "--help-html"
 Print help in \s-1HTML\s0 format.
@@ -212,7 +212,7 @@ None.
 None.
 .SH "SEE ALSO"
 .IX Header "SEE ALSO"
-\&\fIcloc\fR\|(1)
+\&\fIcpan\fR\|(1)
 .SH "COREQUISITES"
 .IX Header "COREQUISITES"
 Uses standard Perl modules.
