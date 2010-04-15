@@ -314,8 +314,8 @@ sub Help (;$$)
     }
     elsif ( $type eq -man )
     {
-	eval "use Pod::Man;";
-        $EVAL_ERROR  and  die "$id: Cannot generate Man: $EVAL_ERROR";
+	eval "use Pod::Man"
+	    or "$id: Cannot generate Man: $EVAL_ERROR";
 
         my %options;
         $options{center} = 'cvs status - formatter';
@@ -325,7 +325,7 @@ sub Help (;$$)
     }
     else
     {
-	if ( $^V =~ /5\.10/ )
+	if ( $PERL_VERSION =~ /5\.10/ )
 	{
 	    # Bug in 5.10. Cant use string ("") as a symbol ref
 	    # while "strict refs" in use at

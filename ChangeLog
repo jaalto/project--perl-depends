@@ -1,3 +1,7 @@
+2010-04-15 Thu  Jari Aalto  <jari.aalto@cante.net>
+
+	* bin/perl-depends.pl (Help): rewrite eval Pod::Man call.
+
 2010-03-24 Wed  Jari Aalto  <jari.aalto@cante.net>
 
 	* README (README): Add Copyright and License.
