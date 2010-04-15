@@ -315,7 +315,7 @@ sub Help (;$$)
     elsif ( $type eq -man )
     {
 	eval "use Pod::Man"
-	    or "$id: Cannot generate Man: $EVAL_ERROR";
+	    or die "$id: Cannot generate Man: $EVAL_ERROR";
 
         my %options;
         $options{center} = 'cvs status - formatter';
