@@ -58,7 +58,7 @@ my $inject = << 'EOF';
 #
 #   DESCRIPTION
 #
-#	By Jari Aalto <jari.aalto@cante.net>
+#       By Jari Aalto <jari.aalto@cante.net>
 #
 #       The inject code instrumented into perl files. The idea is to
 #       examine %INC for all loaded modules that aren't in the standard
@@ -67,12 +67,12 @@ my $inject = << 'EOF';
 #       The results are a crude approximation: paths are simply converted
 #       into module '::' notation. The reader's job is to examine the listing.
 #
-#	An example: the external module depends here is 'Regexp::Common'
-#	and the rest of them can be ignored.
+#       An example: the external module depends here is 'Regexp::Common'
+#       and the rest of them can be ignored.
 #
-#		Regexp::Common                 Regexp/Common.pm
-#		Regexp::Common::CC             Regexp/Common/CC.pm
-#		...
+#               Regexp::Common                 Regexp/Common.pm
+#               Regexp::Common::CC             Regexp/Common/CC.pm
+#               ...
 #
 #   INPUT PARAMETERS
 #
@@ -95,20 +95,20 @@ sub __print_depends ()
 
     for my $lib ( @files )
     {
-        print "# MODULE DPENDENCY LIST\n" unless $header++;
+	print "# MODULE DPENDENCY LIST\n" unless $header++;
 
-	next if $lib =~ m,^/tmp/,;	#  /tmp/tLSYhLFqhj/
+	next if $lib =~ m,^/tmp/,;      #  /tmp/tLSYhLFqhj/
 
 	my $name = $lib;
 	$name =~ s,/usr/share/perl5/,,;
-	$name =~ s/\..*//;		# *.pm
-	$name =~ s,/,::,g;		# Regexp/Common => Regexp::Common
+	$name =~ s/\..*//;              # *.pm
+	$name =~ s,/,::,g;              # Regexp/Common => Regexp::Common
 
 	my @a = Module::CoreList->find_modules(qr/$name/);
 
 	next if @a;
 
-        $hash{$name} = $lib;		# Filter duplicates
+	$hash{$name} = $lib;            # Filter duplicates
     }
 
     for my $key ( sort keys %hash )
@@ -147,14 +147,14 @@ sub Initialize ()
 {
     use vars qw
     (
-        $LIB
-        $PROGNAME
-        $CONTACT
+	$LIB
+	$PROGNAME
+	$CONTACT
 	$LICENSE
-        $URL
+	$URL
     );
 
-    $LICENSE	= "GPL-2+";
+    $LICENSE    = "GPL-2+";
     $LIB        = basename $PROGRAM_NAME;
     $PROGNAME   = $LIB;
 
@@ -278,23 +278,33 @@ None.
 
 None.
 
+=head1 EXIT STATUS
+
+Not defined.
+
+=head1 DEPENDENCIES
+
+Uses standard Perl modules.
+
+=head1 BUGS AND LIMITATIONS
+
+None.
+
 =head1 SEE ALSO
 
 cpan(1)
-
-=head1 COREQUISITES
-
-Uses standard Perl modules.
 
 =head1 AVAILABILITY
 
 Homepage is at http://freshmeat.net/projects/perl-depends
 
-=head1 AUTHORS
+=head1 AUTHOR
 
-Copyright (C) 2009-2010 Jari Aalto
+Jari Aalto
 
 =head1 LICENSE
+
+Copyright (C) 2009-2010 Jari Aalto
 
 This program is free software; you can redistribute and/or modify
 program under the terms of GNU General Public license either version 2
@@ -310,33 +320,22 @@ sub Help (;$$)
 
     if ( $type eq -html )
     {
-        pod2html $PROGRAM_NAME;
+	pod2html $PROGRAM_NAME;
     }
     elsif ( $type eq -man )
     {
 	eval "use Pod::Man"
 	    or die "$id: Cannot generate Man: $EVAL_ERROR";
 
-        my %options;
-        $options{center} = 'cvs status - formatter';
+	my %options;
+	$options{center} = 'cvs status - formatter';
 
-        my $parser = Pod::Man->new(%options);
-        $parser->parse_from_file ($PROGRAM_NAME);
+	my $parser = Pod::Man->new(%options);
+	$parser->parse_from_file($PROGRAM_NAME);
     }
     else
     {
-	if ( $PERL_VERSION =~ /5\.10/ )
-	{
-	    # Bug in 5.10. Cant use string ("") as a symbol ref
-	    # while "strict refs" in use at
-	    # /usr/share/perl/5.10/Pod/Text.pm line 249.
-
-	    system("pod2text $PROGRAM_NAME");
-	}
-	else
-	{
-	    pod2text $PROGRAM_NAME;
-	}
+	system "perl -S pod2text $PROGRAM_NAME";
     }
 
     defined $msg  and  print $msg;
@@ -365,44 +364,44 @@ sub HandleCommandLineArgs ()
 
     use vars qw
     (
-        $test
-        $verb
-        $debug
-        $OPT_EXTENSION
-        $OPT_FILE
+	$test
+	$verb
+	$debug
+	$OPT_EXTENSION
+	$OPT_FILE
     );
 
     Getopt::Long::config( qw
     (
-        require_order
-        no_ignore_case
-        no_ignore_case_always
+	require_order
+	no_ignore_case
+	no_ignore_case_always
     ));
 
-    my ( $help, $helpMan, $helpHtml, $version ); # local variables to function
-    my ( $helpExclude, $excludeVcs , $optDir, $optVcs );
+    my ( $help, $helpMan, $helpHtml, $version );
+    my ( $helpExclude, $optDir );
 
     $debug = -1;
     $OPT_EXTENSION = ".tmp";
 
     GetOptions      # Getopt::Long
     (
-	  "debug"		=> \$optDir
+	  "debug"               => \$optDir
 	, "extesion=s"          => \$OPT_EXTENSION
-	, "help-exclude"	=> \$helpExclude
-	, "help-html"		=> \$helpHtml
-	, "help-man"	        => \$helpMan
-	, "h|help"	        => \$help
-	, "v|verbose:i"	        => \$verb
-	, "V|version"	        => \$version
+	, "help-exclude"        => \$helpExclude
+	, "help-html"           => \$helpHtml
+	, "help-man"            => \$helpMan
+	, "h|help"              => \$help
+	, "v|verbose:i"         => \$verb
+	, "V|version"           => \$version
     );
 
-    $version		and  die "$VERSION $CONTACT $LICENSE $URL\n";
-    $helpExclude 	and  HelpExclude();
-    $help		and  Help();
-    $helpMan		and  Help(-man);
-    $helpHtml		and  Help(-html);
-    $version		and  Version();
+    $version            and  die "$VERSION $CONTACT $LICENSE $URL\n";
+    $helpExclude        and  HelpExclude();
+    $help               and  Help();
+    $helpMan            and  Help(-man);
+    $helpHtml           and  Help(-html);
+    $version            and  Version();
 
     $debug = 1          if $debug == 0;
     $debug = 0          if $debug < 0;
@@ -432,13 +431,15 @@ sub Main ()
     for my $file (@ARGV)
     {
 	my $dest = "$file$OPT_EXTENSION";
-	system("cp $file $dest");
+	system "cp $file $dest";
 
 	if ( -f $dest )
 	{
-	    open FILE, "<", $dest or next;
-	    $_ = join '', <FILE>;
-	    close FILE;
+	    open my $FILE, "<", $dest   or  next;
+
+	    local $INPUT_RECORD_SEPARATOR = undef;
+	    $ARG = <$FILE>;
+	    close $FILE or  warn "Close failure $dest $ERRNO";
 
 	    if ( /^END.*?{(?<c>.*)}/sm  and  not $+{c} =~ /print_depends/ )
 	    {
@@ -448,9 +449,9 @@ sub Main ()
 	    {
 		s/^(#.*)|^$/$1\n$end$inject/;
 
-		open FILE, ">", $dest or next;
-		print FILE;
-		close FILE;
+		open my $FILE, ">", $dest   or  next;
+		print $FILE;
+		close $FILE  or  warn "Close failure $dest $ERRNO";
 		print "perl $dest\n";
 	    }
 	}

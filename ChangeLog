@@ -1,6 +1,7 @@
 2010-04-15 Thu  Jari Aalto  <jari.aalto@cante.net>
 
 	* bin/perl-depends.pl (Help): rewrite eval Pod::Man call.
+	(HandleCommandLineArgs): Correct many of the Perl::Critic remarks.
 
 2010-03-24 Wed  Jari Aalto  <jari.aalto@cante.net>
 
