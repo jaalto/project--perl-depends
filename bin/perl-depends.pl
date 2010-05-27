@@ -50,7 +50,7 @@ use vars qw ( $VERSION );
 #   The following variable is updated by custom Emacs setup whenever
 #   this file is saved.
 
-my $VERSION = '2010.0324.1852';
+my $VERSION = '2010.0527.1804';
 
 my $inject = << 'EOF';
 
@@ -163,7 +163,6 @@ sub Initialize ()
 
     $OUTPUT_AUTOFLUSH = 1;
 }
-
 
 # ****************************************************************************
 #
@@ -324,8 +323,12 @@ sub Help (;$$)
     }
     elsif ( $type eq -man )
     {
-	eval "use Pod::Man"
-	    or die "$id: Cannot generate Man: $EVAL_ERROR";
+	eval "use Pod::Man";
+
+	if ( $EVAL_ERROR )
+	{
+	    die "$id: Cannot load Pod::Man: $EVAL_ERROR";
+	}
 
 	my %options;
 	$options{center} = 'cvs status - formatter';
