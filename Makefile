@@ -130,10 +130,10 @@ dist-git: test doc
 # The "gt" is maintainer's program frontend to Git
 # Rule: dist-snap - [maintainer] release snapshot from Git repository
 dist-snap: test doc
-	@echo gt tar -q -z -p $(PACKAGE) -c -D master
+	@echo gt tar -q -z -p $(PACKAGE) -c -T master
 
 # Rule: dist - [maintainer] make release archive
-dist: dist-gitx
+dist: dist-snap
 
 dist-ls:
 	@ls -1tr $(DIST_DIR)/$(PACKAGE)*
