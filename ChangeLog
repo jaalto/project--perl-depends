@@ -1,3 +1,8 @@
+2010-06-22  Jari Aalto  <jari.aalto@cante.net>
+
+	* bin/perl-depends.pl (HELP): Delete duplicate EXAMPLES section.
+	(AVAILABILITY): leave only URL.
+
 2010-05-27 Thu  Jari Aalto  <jari.aalto@cante.net>
 
 	* bin/perl-depends.pl (Help): Correct load of Pod::Man.

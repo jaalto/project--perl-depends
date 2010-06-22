@@ -265,10 +265,6 @@ Instrument a file, run it to see results and delete instrumentation:
 
 None.
 
-=head1 EXAMPLES
-
-None.
-
 =head1 ENVIRONMENT
 
 None.
@@ -295,7 +291,7 @@ cpan(1)
 
 =head1 AVAILABILITY
 
-Homepage is at http://freshmeat.net/projects/perl-depends
+http://freshmeat.net/projects/perl-depends
 
 =head1 AUTHOR
 
