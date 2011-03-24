@@ -1,3 +1,13 @@
+2011-03-24 Thu  Jari Aalto  <jari.aalto@cante.net>
+
+	* bin/perl-depends.pl (Main): Correct instrumented *.tmp zero file
+	size. Add missing $_ arg to write content of modified file into
+	(__print_depends): Make perl version to match 5.\d\d, not 5.10.
+	Return 0 if instrumented file only uses standard Perl modules,
+	return 1 otherwise. Display header "PERL MODULE DPENDENCY LIST"
+	only if there are modules to loop.
+	(Help::EXIT STATUS): Document status codes 0 and 1.
+
 2010-06-22  Jari Aalto  <jari.aalto@cante.net>
 
 	* bin/perl-depends.pl (HELP): Delete duplicate EXAMPLES section.

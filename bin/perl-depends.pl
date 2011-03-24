@@ -4,7 +4,7 @@
 #
 #   Copyright information
 #
-#       Copyright (C) 2009-2010 Jari Aalto
+#       Copyright (C) 2009-2011 Jari Aalto <jari.aalto@cante.net>
 #
 #   License
 #
@@ -86,7 +86,7 @@ my $inject = << 'EOF';
 
 sub __print_depends ()
 {
-    my @files = sort grep !/5.10|^[\w.]+$/, split ' ', join ' ', %INC;
+    my @files = sort grep !/5.\d\d|^[\w.]+$/, split ' ', join ' ', %INC;
 
     eval "use Module::CoreList";
 
@@ -95,8 +95,6 @@ sub __print_depends ()
 
     for my $lib ( @files )
     {
-	print "# MODULE DPENDENCY LIST\n" unless $header++;
-
 	next if $lib =~ m,^/tmp/,;      #  /tmp/tLSYhLFqhj/
 
 	my $name = $lib;
@@ -111,10 +109,16 @@ sub __print_depends ()
 	$hash{$name} = $lib;            # Filter duplicates
     }
 
+    my $status = 0;
+
     for my $key ( sort keys %hash )
     {
+	print "# PERL MODULE DPENDENCY LIST\n" unless $header++;
 	printf "%-30s %s\n", $key, $hash{$key};
+	$status = 1;
     }
+
+    exit $status;
 }
 EOF
 
@@ -275,7 +279,10 @@ None.
 
 =head1 EXIT STATUS
 
-Not defined.
+This program's exit status is not defined.
+
+The instrumented programs exit status is 1 in case external moduels
+are displayed and 0 if no external modules are found.
 
 =head1 DEPENDENCIES
 
@@ -295,11 +302,11 @@ http://freshmeat.net/projects/perl-depends
 
 =head1 AUTHOR
 
-Jari Aalto
+Jari Aalto <jari.aalto@cante.net>
 
 =head1 LICENSE
 
-Copyright (C) 2009-2010 Jari Aalto
+Copyright (C) 2009-2011 Jari Aalto <jari.aalto@cante.net>
 
 This program is free software; you can redistribute and/or modify
 program under the terms of GNU General Public license either version 2
@@ -448,7 +455,7 @@ sub Main ()
 		s/^(#.*)|^$/$1\n$end$inject/;
 
 		open my $FILE, ">", $dest   or  next;
-		print $FILE;
+		print $FILE $_;
 		close $FILE  or  warn "Close failure $dest $ERRNO";
 		print "perl $dest\n";
 	    }
