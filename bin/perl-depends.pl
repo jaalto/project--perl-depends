@@ -50,7 +50,7 @@ use vars qw ( $VERSION );
 #   The following variable is updated by custom Emacs setup whenever
 #   this file is saved.
 
-my $VERSION = '2010.0527.1804';
+my $VERSION = '2011.0324.1501';
 
 my $inject = << 'EOF';
 
