@@ -163,7 +163,7 @@ sub Initialize ()
     $PROGNAME   = $LIB;
 
     $CONTACT     = "Jari Aalto";
-    $URL         = "http://freshmeat.net/projects/perl-depends";
+    $URL         = "http://freecode.net/projects/perl-depends";
 
     $OUTPUT_AUTOFLUSH = 1;
 }
@@ -298,7 +298,7 @@ cpan(1)
 
 =head1 AVAILABILITY
 
-http://freshmeat.net/projects/perl-depends
+http://freecode.net/projects/perl-depends
 
 =head1 AUTHOR
 
