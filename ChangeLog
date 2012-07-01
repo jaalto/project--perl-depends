@@ -1,3 +1,8 @@
+2012-07-01 Sun  Jari Aalto  <jari.aalto@cante.net>
+
+	* bin/perl-depends.pl (Help): Update POD and fix grammar. Patch
+	and partial proof reading thanks to Justin B Rye <jbr@edlug.org.uk>.
+
 2011-03-24 Thu  Jari Aalto  <jari.aalto@cante.net>
 
 	* bin/perl-depends.pl (Main): Correct instrumented *.tmp zero file

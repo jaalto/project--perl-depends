@@ -1,10 +1,10 @@
 #!/usr/bin/perl
 #
-#   perl-depends.pl -- Roughly find out module depends from perl file(s)
+#   perl-depends.pl -- rough indicator of Perl module dependencies
 #
 #   Copyright information
 #
-#       Copyright (C) 2009-2011 Jari Aalto <jari.aalto@cante.net>
+#       Copyright (C) 2009-2012 Jari Aalto <jari.aalto@cante.net>
 #
 #   License
 #
@@ -50,7 +50,7 @@ use vars qw ( $VERSION );
 #   The following variable is updated by custom Emacs setup whenever
 #   this file is saved.
 
-my $VERSION = '2011.0324.1501';
+my $VERSION = '2012.0701.1021';
 
 my $inject = << 'EOF';
 
@@ -188,7 +188,7 @@ sub Initialize ()
 
 =head1 NAME
 
-perl-depends - Roughly find out module depends from Perl file(s)
+perl-depends - rough indicator of Perl module dependencies
 
 =head1 SYNOPSIS
 
@@ -196,28 +196,27 @@ perl-depends - Roughly find out module depends from Perl file(s)
 
 =head1 DESCRIPTION
 
-Find out roughly the modules the program uses. This is based on the
-idea, that Perl evaluates the "use" commands at compile time and
-stores the loaded module information into the %INC variable. By
-examining the loaded modules and comparing them against the standard
-Perl modules, the external module dependencies can be roughly
-estimated.
+An utility to show roughly what modules a program uses. Perl
+evaluates "use" commands at compile time, storing the information
+about loaded modules in the %INC variable. Comparing that list with
+the standard Perl modules gives an estimate of the external module
+dependencies.
 
-The depends information can be used to determine what external modules
-have to be installed before a program can be used.
+The dependency information can be used to determine what external
+modules have to be installed before the program can be used.
 
 The target FILE have to be instrumented with the dependency checking
 code. The resulting "binary" is then stored in a temporary file which
 the user runs.
 
 This program does not run the instrumented files because it cannot
-know what possible options need to be passed for the program to
+know what possible options need to be passed for programs to
 trigger "no behavior". That is, something that doesn't actually
 involve executing the "binary" in real. Such options passed would
 include --version, --dry-run, invalid options like
---generate-syntax-error-now, or invalid files etc. to make program
+--generate-syntax-error-now, or invalid files etc to make program
 stop on error. The user can know better the details of running the
-intrumented file.
+intrumented files.
 
 An example of output: the external module depends here is
 'Regexp::Common' and the rest of them can be ignored.
@@ -281,7 +280,7 @@ None.
 
 This program's exit status is not defined.
 
-The instrumented programs exit status is 1 in case external moduels
+The instrumented programs exit status is 1 in case external modules
 are displayed and 0 if no external modules are found.
 
 =head1 DEPENDENCIES
@@ -310,7 +309,8 @@ Copyright (C) 2009-2011 Jari Aalto <jari.aalto@cante.net>
 
 This program is free software; you can redistribute and/or modify
 program under the terms of GNU General Public license either version 2
-of the License, or (at your option) any later version.
+of the License, or (at your option) any later version. See
+<http://www.gnu.org/licenses/>.
 
 =cut
 
