@@ -50,7 +50,7 @@ use vars qw ( $VERSION );
 #   The following variable is updated by custom Emacs setup whenever
 #   this file is saved.
 
-my $VERSION = '2012.0701.1021';
+my $VERSION = '2012.0701.1851';
 
 my $inject = << 'EOF';
 
@@ -188,7 +188,7 @@ sub Initialize ()
 
 =head1 NAME
 
-perl-depends - rough indicator of Perl module dependencies
+perl-depends - Roughly find out module dependencies from Perl file(s)
 
 =head1 SYNOPSIS
 
@@ -196,29 +196,30 @@ perl-depends - rough indicator of Perl module dependencies
 
 =head1 DESCRIPTION
 
-An utility to show roughly what modules a program uses. Perl
-evaluates "use" commands at compile time, storing the information
-about loaded modules in the %INC variable. Comparing that list with
-the standard Perl modules gives an estimate of the external module
+Find out roughly the modules the program uses. This is based on the
+idea that Perl evaluates the "use" commands at compile time and
+stores the loaded module information in the %INC variable. By
+examining the loaded modules and comparing them against the standard
+Perl modules, the external module dependencies can be roughly
 dependencies.
 
 The dependency information can be used to determine what external
 modules have to be installed before the program can be used.
 
-The target FILE have to be instrumented with the dependency checking
-code. The resulting "binary" is then stored in a temporary file which
-the user runs.
+The target FILE has to be instrumented (a comouting term to inject
+code) with the dependency checking code. The resulting script is then
+stored in a temporary file which the user runs.
 
 This program does not run the instrumented files because it cannot
 know what possible options need to be passed for programs to
-trigger "no behavior". That is, something that doesn't actually
-involve executing the "binary" in real. Such options passed would
-include --version, --dry-run, invalid options like
---generate-syntax-error-now, or invalid files etc to make program
-stop on error. The user can know better the details of running the
-intrumented files.
+trigger I<null behavior>. That is, something that doesn't actually
+involve executing the script for real. Such options might
+include --version, --dry-run, or options like
+--generate-syntax-error-now, or invalid arguments to make the program
+stop with an error. The user is more likely to know the best way of
+running the intrumented files.
 
-An example of output: the external module depends here is
+An example of output: the external module dependency here is
 'Regexp::Common' and the rest of them can be ignored.
 
     Regexp::Common                 Regexp/Common.pm
@@ -258,7 +259,8 @@ Print contact and version information.
 
 =head1 EXAMPLES
 
-Instrument a file, run it to see results and delete instrumentation:
+Instrument a file, run it to see the results and delete instrumentated
+script:
 
     perl-depends file.pl
     perl file.pl.tmp --version
@@ -280,7 +282,7 @@ None.
 
 This program's exit status is not defined.
 
-The instrumented programs exit status is 1 in case external modules
+The instrumented program's exit status is 1 if external modules
 are displayed and 0 if no external modules are found.
 
 =head1 DEPENDENCIES
@@ -289,7 +291,9 @@ Uses standard Perl modules.
 
 =head1 BUGS AND LIMITATIONS
 
-None.
+If the target program's code conditionally loads mor perl modules
+during execution, you must run the program for real to have those
+modules detected.
 
 =head1 SEE ALSO
 
