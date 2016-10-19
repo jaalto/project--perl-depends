@@ -1,3 +1,7 @@
+2016-10-19 Wed  Jari Aalto  <jari.aalto@cante.net>
+
+	* bin/perl-depends.pl (POD): Fix spelling.
+
 2012-07-01 Sun  Jari Aalto  <jari.aalto@cante.net>
 
 	* bin/perl-depends.pl (Help): Update POD and fix grammar. Patch
