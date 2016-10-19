@@ -50,7 +50,7 @@ use vars qw ( $VERSION );
 #   The following variable is updated by custom Emacs setup whenever
 #   this file is saved.
 
-my $VERSION = '2012.0701.1851';
+my $VERSION = '2016.1019.1229';
 
 my $inject = << 'EOF';
 
@@ -217,7 +217,7 @@ involve executing the script for real. Such options might
 include --version, --dry-run, or options like
 --generate-syntax-error-now, or invalid arguments to make the program
 stop with an error. The user is more likely to know the best way of
-running the intrumented files.
+running the instrumented files.
 
 An example of output: the external module dependency here is
 'Regexp::Common' and the rest of them can be ignored.
