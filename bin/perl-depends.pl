@@ -30,10 +30,10 @@
 
 use strict;
 
-use autouse 'Pod::Text'     => qw( pod2text );
-use autouse 'Pod::Html'     => qw( pod2html );
+use autouse 'Pod::Text'     => qw(pod2text);
+use autouse 'Pod::Html'     => qw(pod2html);
 
-use English qw( -no_match_vars );
+use English qw(-no_match_vars);
 use Getopt::Long;
 use File::Basename;
 use File::Copy qw(cp);
@@ -44,14 +44,14 @@ use File::Copy qw(cp);
 #
 # ****************************************************************************
 
-use vars qw ( $VERSION );
+use vars qw ($VERSION);
 
 #   This is for use of Makefile.PL and ExtUtils::MakeMaker
 #
 #   The following variable is updated by custom Emacs setup whenever
 #   this file is saved.
 
-my $VERSION = '2016.1029.0940';
+my $VERSION = '2016.1029.0952';
 
 my $inject = << 'EOF';
 
@@ -94,7 +94,7 @@ sub __print_depends ()
     my $header;
     my %hash;
 
-    for my $lib ( @files )
+    for my $lib (@files)
     {
 	next if $lib =~ m,^/tmp/,;      #  /tmp/tLSYhLFqhj/
 
@@ -112,7 +112,7 @@ sub __print_depends ()
 
     my $status = 0;
 
-    for my $key ( sort keys %hash )
+    for my $key (sort keys %hash)
     {
 	print "# PERL MODULE DPENDENCY LIST\n" unless $header++;
 	printf "%-30s %s\n", $key, $hash{$key};
@@ -325,15 +325,15 @@ sub Help (;$$)
     my $type = shift;  # optional arg, type
     my $msg  = shift;  # optional arg, why are we here...
 
-    if ( $type eq -html )
+    if ($type eq -html)
     {
 	pod2html $PROGRAM_NAME;
     }
-    elsif ( $type eq -man )
+    elsif ($type eq -man)
     {
 	eval "use Pod::Man";
 
-	if ( $EVAL_ERROR )
+	if ($EVAL_ERROR)
 	{
 	    die "$id: Cannot load Pod::Man: $EVAL_ERROR";
 	}

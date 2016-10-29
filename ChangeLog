@@ -1,6 +1,7 @@
 2016-10-29 Sat  Jari Aalto  <jari.aalto@cante.net>
 
 	* bin/perl-depends.pl
+	Adjust code layout.
 	(require): File::Copy.
 	(HandleCommandLineArgs): Accept
 	LEVEL for --debug option.
