@@ -1,3 +1,13 @@
+2016-10-29 Sat  Jari Aalto  <jari.aalto@cante.net>
+
+	* bin/perl-depends.pl
+	(require): File::Copy.
+	(HandleCommandLineArgs): Accept
+	LEVEL for --debug option.
+	(Main): Use File::Copy::cp and drop system() + cp(1) call.
+	For DEST file, drop path as we may not have write permission.
+	Copy DEST to current directory.
+
 2016-10-19 Wed  Jari Aalto  <jari.aalto@cante.net>
 
 	* bin/perl-depends.pl (POD): Fix spelling.

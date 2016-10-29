@@ -36,6 +36,7 @@ use autouse 'Pod::Html'     => qw( pod2html );
 use English qw( -no_match_vars );
 use Getopt::Long;
 use File::Basename;
+use File::Copy qw(cp);
 
 # ****************************************************************************
 #
@@ -50,7 +51,7 @@ use vars qw ( $VERSION );
 #   The following variable is updated by custom Emacs setup whenever
 #   this file is saved.
 
-my $VERSION = '2016.1029.0922';
+my $VERSION = '2016.1029.0940';
 
 my $inject = << 'EOF';
 
@@ -387,15 +388,15 @@ sub HandleCommandLineArgs ()
 	no_ignore_case_always
     ));
 
-    my ( $help, $helpMan, $helpHtml, $version );
-    my ( $helpExclude, $optDir );
+    my ($help, $helpMan, $helpHtml, $version);
+    my ($helpExclude, $optDir, $optDebug);
 
-    $debug = -1;
+    $debug = 0;
     $OPT_EXTENSION = ".tmp";
 
     GetOptions      # Getopt::Long
     (
-	  "debug"               => \$optDir
+	  "debug:i"             => \$optDebug
 	, "extesion=s"          => \$OPT_EXTENSION
 	, "help-exclude"        => \$helpExclude
 	, "help-html"           => \$helpHtml
@@ -412,8 +413,7 @@ sub HandleCommandLineArgs ()
     $helpHtml           and  Help(-html);
     $version            and  Version();
 
-    $debug = 1          if $debug == 0;
-    $debug = 0          if $debug < 0;
+    $debug = $optDebug  if $optDebug;
 }
 
 # ****************************************************************************
@@ -439,10 +439,14 @@ sub Main ()
 
     for my $file (@ARGV)
     {
-	my $dest = "$file$OPT_EXTENSION";
-	system "cp $file $dest";
+	# It' better not to unclude path becase
+	# you may not have write access to the directory.
 
-	if ( -f $dest )
+	my $dest = basename "$file$OPT_EXTENSION";
+
+	cp $file, $dest;
+
+	if (-f $dest)
 	{
 	    open my $FILE, "<", $dest   or  next;
 
