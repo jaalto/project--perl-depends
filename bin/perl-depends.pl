@@ -50,7 +50,7 @@ use vars qw ( $VERSION );
 #   The following variable is updated by custom Emacs setup whenever
 #   this file is saved.
 
-my $VERSION = '2016.1019.1229';
+my $VERSION = '2016.1029.0922';
 
 my $inject = << 'EOF';
 
@@ -246,7 +246,7 @@ Print help in HTML format.
 
 Print help in manual page C<man(1)> format.
 
-=item B<-v, --verbose LEVEL>
+=item B<-v, --verbose [LEVEL]>
 
 Print informational messages. Increase numeric LEVEL for more
 verbosity.
@@ -263,7 +263,7 @@ Instrument a file, run it to see the results and delete instrumentated
 script:
 
     perl-depends file.pl
-    perl file.pl.tmp --version
+    perl file.pl.tmp <followed by whatever args the program needs>
     rm *.tmp
 
 =head1 TROUBLESHOOTING
